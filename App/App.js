@@ -35,9 +35,12 @@ const Stack = createStackNavigator()
 const App: () => Node = () => {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [user, setUser] = useState()
   const authContext = {
       isLoggedIn,
       setIsLoggedIn,
+      user, 
+      setUser,
   }
 
   return (

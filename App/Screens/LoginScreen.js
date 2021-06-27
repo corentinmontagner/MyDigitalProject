@@ -6,15 +6,15 @@ import AuthContext from '../Contexts/AuthContext'
 
 import axios from 'axios';
 
-import RegisterScreen from './RegisterScreen'
-
 import styles from './Styles/LoginStyle'
 
 const LoginScreen = ({ navigation }) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
+
     const {isLoggedIn, setIsLoggedIn} = useContext(AuthContext)
+    const {user, setUser} = useContext(AuthContext)
 
     const Login = () => {
         console.log(`LOGIN : `, email, password)
@@ -33,10 +33,11 @@ const LoginScreen = ({ navigation }) => {
 
         axios(config)
             .then(function (response) {
-                //console.log(JSON.stringify(response.data));
+                console.log(JSON.stringify(response.data, null, 2));
                 const token = response.data.jwt
                 saveToken(token)
                 setIsLoggedIn(true)
+                setUser(response.data.user)
                 //getToken()
             })
             .catch(function (error) {

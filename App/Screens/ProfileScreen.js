@@ -4,7 +4,7 @@ import {Text, View, Button} from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import AuthContext from '../Contexts/AuthContext'
 
-const ProfileScreen = () => {
+const ProfileScreen = ({ navigation }) => {
     const {isLoggedIn, setIsLoggedIn} = useContext(AuthContext)
 
     const Logout = () => {
